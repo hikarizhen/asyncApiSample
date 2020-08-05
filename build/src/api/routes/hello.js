@@ -5,7 +5,7 @@ module.exports = router;
 
 router.use('hello', async (message, next) => {
   try {
-    await helloHandler.({message});
+    await helloHandler.hello({message});
     next();
   } catch (e) {
     next(e);

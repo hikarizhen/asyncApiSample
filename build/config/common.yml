@@ -5,7 +5,7 @@ default:
 
   broker:
     mqtt:
-      url: mqtt://83
+      url: mqtt://test.mosquitto.org
       topics: ["hello"]
       qos:
       protocol: mqtt
