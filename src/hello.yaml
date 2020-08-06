@@ -7,9 +7,48 @@ servers:
     url: test.mosquitto.org:1883
     protocol: mqtt
 channels:
-  hello:
+  helloworld:
     publish:
       message:
         payload:
           type: string
-          pattern: '^hello .+$'
+          pattern: '^helloworld .+$'
+  hey:
+    publish:
+      message:
+        $ref: '#/components/messages/hey-msg'
+  goodbye:
+    publish:
+      message:
+        $ref: '#/components/messages/goodbye-msg'
+  userSignedUp:
+    publish:
+      message:
+        $ref: '#/components/messages/goodbye-msg'
+components:
+  messages:
+    hey-msg:
+      payload:
+        type: object
+        properties:
+          name:
+            type: string
+          sentAt:
+            $ref: '#/components/schemas/sent-at'
+    goodbye-msg:
+      payload:
+        type: object
+        properties:
+          sentAt:
+            $ref: '#/components/schemas/sent-at'
+    userSignedUp-msg:
+      payload:
+        type: object
+        properties:
+          sentAt:
+            $ref: '#/components/schemas/sent-at'
+  schemas:
+    sent-at:
+      type: string
+      description: The date and time a message was sent.
+      format: datetime
